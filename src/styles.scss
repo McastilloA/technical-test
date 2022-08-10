@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+$color-primary: #ed1c27;
+$color-muted: #595959;
+
+
+.bg-primary {
+    background-color: $color-primary !important;
+}
+
+.bg-muted {
+    background-color: $color-muted;
+}
+
+.btn-primary, .btn-primary:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+}
