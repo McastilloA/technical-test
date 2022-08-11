@@ -15,3 +15,21 @@ $color-muted: #595959;
     background-color: $color-primary;
     border-color: $color-primary;
 }
+
+@media only screen and (max-width: 600px) {
+    .py-sm-2 {
+        padding: 10px 0;
+    }
+
+    .text-sm-center {
+        text-align: center;
+    }
+
+    .list-group-item {
+        padding: 10px 0;
+    }
+
+    footer.py-5 {
+        padding: 0 10px 48px !important;
+    }
+}
