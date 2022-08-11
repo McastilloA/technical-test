@@ -1,52 +1,54 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-        <div class="card">
-            <img src="https://via.placeholder.com/288x100.png?text=Image+movie" class="card-img-top" alt="img-movie">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
+<div class="h-100 p-5 bg-light border rounded-3 mb-3">
+    <h3>Filtros por título y año</h3>
+    <hr>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmittedFilter()">
+        <div class="row row-cols-md-3 row-cols-sm-1">
+            <div class="col-md-5 col-sm-12 py-sm-2">
+                <div class="w-100">
+                    <input id="titleMovie" type="text" class="form-control" formControlName="titleMovie"
+                        placeholder="Título de película">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-12 py-sm-2">
+                <div class="w-100">
+                    <input id="yearMovie" type="text" class="form-control" formControlName="yearMovie"
+                        placeholder="Año de película">
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 py-sm-2">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="h-100 p-5 bg-light border rounded-3">
+    <h3>Lista de películas</h3>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor='let card of cards;'>
+            <div class="card h-100" [routerLink]='["./detail", card.imdbID]'>
+
+                <img *ngIf="card.Poster !== 'N/A'; else noImage" [src]="card.Poster" class="card-img-top"
+                    alt="img-movie-{{card.imdbID}}">
+                <ng-template #noImage>
+                    <img src="https://via.placeholder.com/300x200?text=Image+not+found" class="card-img-top"
+                        alt="img-movie-{{card.imdbID}}">
+                </ng-template>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{card.Title}}</h5>
+                    <p class="card-text">{{card.Type}}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{card.Year}}</small>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col">
-        <div class="card">
-            <img src="https://via.placeholder.com/288x100.png?text=Image+movie" class="card-img-top" alt="img-movie">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <img src="https://via.placeholder.com/288x100.png?text=Image+movie" class="card-img-top" alt="img-movie">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <img src="https://via.placeholder.com/288x100.png?text=Image+movie" class="card-img-top" alt="img-movie">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <img src="https://via.placeholder.com/288x100.png?text=Image+movie" class="card-img-top" alt="img-movie">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-            </div>
-        </div>
+    <div class="alert alert-danger d-flex align-items-center mt-5" role="alert" *ngIf="validateMessage">
+        <div>Información no disponible, favor filtrar por título y luego por año de la película.</div>
     </div>
 </div>

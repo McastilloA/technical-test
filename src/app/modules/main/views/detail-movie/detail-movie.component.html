@@ -1,1 +1,78 @@
-<h1>detail-movie works!</h1>
+<div class="h-100 p-5 bg-light border rounded-3 mb-3">
+    <div class="alert alert-danger d-flex align-items-center mt-5" role="alert" *ngIf="validateMessage">
+        <div>Información incorrecta, favor revisar el IMDb ID de la película.</div>
+    </div>
+    <ng-container *ngIf="!validateMessage">
+        <h3>{{detailsMovie.Title}}</h3>
+        <hr>
+
+        <div class="row row-cols-md-2">
+            <div class="col-md-5 col-sm-12">
+                <div class="w-100">
+                    <img *ngIf="detailsMovie.Poster !== 'N/A'; else noImage" [src]="detailsMovie.Poster"
+                        class="card-img-top" alt="img-movie-{{detailsMovie.imdbID}}">
+                    <ng-template #noImage>
+                        <img src="https://via.placeholder.com/300x450?text=Image+not+found" class="card-img-top"
+                            alt="img-movie-{{detailsMovie.imdbID}}">
+                    </ng-template>
+                    <small><strong>Ref: </strong> {{detailsMovie.imdbID}}</small>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Actores: </strong> {{detailsMovie.Actors}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Nominaciones: </strong> {{detailsMovie.Awards}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Taquilla: </strong> {{detailsMovie.BoxOffice}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>País: </strong> {{detailsMovie.Country}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>DVD: </strong> {{detailsMovie.DVD}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Director: </strong> {{detailsMovie.Director}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Género: </strong> {{detailsMovie.Genre}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Idioma: </strong> {{detailsMovie.Language}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Argumento: </strong> {{detailsMovie.Plot}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Producción: </strong> {{detailsMovie.Production}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Estrenada: </strong> {{detailsMovie.Released}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Duración: </strong> {{detailsMovie.Runtime}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Tipo: </strong> {{detailsMovie.Type}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Sitio web: </strong> {{detailsMovie.Website}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Escritor: </strong> {{detailsMovie.Writer}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Año: </strong> {{detailsMovie.Year}}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Votos: </strong> {{detailsMovie.imdbVotes}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ng-container>
+</div>

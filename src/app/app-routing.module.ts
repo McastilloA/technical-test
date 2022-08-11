@@ -4,17 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'movies',
-    loadChildren: () => import('./modules/main/main-routing.module').then((m) => m.HomeRoutingModule)
+    loadChildren: () => import('./modules/main/main.module').then((m) => m.HomeModule)
   },
   { path: '', redirectTo: 'movies', pathMatch: 'full' },
-  { path: '**', redirectTo: 'movies', pathMatch: 'full' },
+  { path: '**', redirectTo: 'movies', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    enableTracing: true,
-    preloadingStrategy: PreloadAllModules
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload',
+      relativeLinkResolution: 'legacy'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

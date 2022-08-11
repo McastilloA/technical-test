@@ -17,17 +17,17 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2020",
-    "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
     "paths": {
       "@core/*": ["app/core/*"],
       "@modules/*": ["app/modules/*"],
       "@shared/*": ["app/shared/*"],
       "@env": ["environments/environment"]
-    }
+    },
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
